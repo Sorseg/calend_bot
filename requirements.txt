@@ -1,1 +1,2 @@
 aiohttp==0.21.6
+dateparser==0.4.0
