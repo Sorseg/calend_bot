@@ -1,6 +1,8 @@
 import aiohttp
 import json
 
+CALENDAR_DOC_ID = 'BQADAgADHQAD6SXYBabJP3F2w2JHAg'
+
 
 class Api:
     url = 'https://api.telegram.org/bot{token}/{method}'
@@ -24,6 +26,11 @@ class Api:
         if messages:
             self.last_update_id = max((m['update_id'] for m in messages))
         return messages
+
+    async def send_inline_response(self, response):
+        url = self.url.format(token=self.token, method='answerInlineQuery')
+        result = await self.make_request(url, response)
+        print(result)
 
     def iterate_messages(self):
         return UpdateIterator(self)
