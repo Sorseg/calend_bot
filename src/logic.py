@@ -1,8 +1,9 @@
 import json
 import dateparser
-from calendar import TextCalendar
+from custom_calendar import BracketCalendar
 from telegram_api.api import CALENDAR_DOC_ID
 import uuid
+
 
 class Handler:
     def handle(self, msg):
@@ -12,7 +13,7 @@ class Handler:
         date = dateparser.parse(date_text)
         cal = 'Not recognized'
         if date:
-            cal = '```{}```'.format(TextCalendar().formatmonth(date.year, date.month))
+            cal = '```{}```'.format(BracketCalendar().formatmonth(date.year, date.month, day=date.day))
         parsed_str = date.strftime('%Y-%m-%d') if date else 'WAT?'
 
         return {
@@ -29,7 +30,7 @@ class Handler:
                     'hide_url': True,
                     'thumb_url': 'sorseg.ru/c.jpg',
                     'input_message_content': {
-                        'message_text': cal,
+                        'message_text': date_text + '\n' + cal,
                         'parse_mode': 'Markdown'
                     }
                 }
