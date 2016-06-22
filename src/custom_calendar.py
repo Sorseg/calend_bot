@@ -12,7 +12,7 @@ class BracketCalendar(TextCalendar):
         s += '\n' * l
         s += ' ' + self.formatweekheader(w).rstrip()
         s += '\n' * l
-        day_re = re.compile(r'\s?{}\s?'.format(day))
+        day_re = re.compile(r'\s?\b{}\b\s?'.format(day))
         for week in self.monthdays2calendar(theyear, themonth):
             week_str = ' ' + self.formatweek(week, w).rstrip()
             s += day_re.sub('[{}]'.format(day), week_str)
