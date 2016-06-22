@@ -1,8 +1,6 @@
 import aiohttp
 import json
 
-CALENDAR_DOC_ID = 'BQADAgADHQAD6SXYBabJP3F2w2JHAg'
-
 
 class Api:
     url = 'https://api.telegram.org/bot{token}/{method}'

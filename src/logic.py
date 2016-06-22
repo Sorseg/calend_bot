@@ -1,7 +1,6 @@
 import json
 import dateparser
 from custom_calendar import BracketCalendar
-from telegram_api.api import CALENDAR_DOC_ID
 import uuid
 
 
@@ -22,7 +21,6 @@ class Handler:
                 {
                     'type': 'article',
                     'id': uuid.uuid4().hex,
-                    'gif_file_id': CALENDAR_DOC_ID,
                     'title': date_text,
                     # 'caption': parsed_str,
                     'description': parsed_str,
